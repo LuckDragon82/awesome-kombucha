@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Lets let twitter style this for us
 gem 'bootstrap-sass'
 
+# Pusher real time events
+gem 'pusher'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -47,5 +50,10 @@ group :development, :test do
   
   #environment variables
   gem 'dotenv-rails'
+  
+  gem 'better_errors'
+  
+  # fake data for the pusher fake data rake task
+  gem 'faker'
 end
 
