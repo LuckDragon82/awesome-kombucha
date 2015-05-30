@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
   
   before_save :calculate_amount, :authorize_credit_card
   
+  after_save :push_update
+  
   def correct_credit_card_date
     self.credit_card_date = credit_card_date || ''
     error = false
@@ -18,6 +20,8 @@ class Order < ActiveRecord::Base
     self.total = quantity * 10
   end
   
+  private 
+  
   def authorize_credit_card
     begin
       self.confirmation_number = CreditCard.process({credit_card_number: credit_card_number, credit_card_date: credit_card_date, credit_card_code: credit_card_code, first_name: first_name, last_name: last_name, total: total})
@@ -25,5 +29,9 @@ class Order < ActiveRecord::Base
       errors.add('credit_card_information', 'is not valid')
       false
     end
+  end
+  
+  def push_update
+    
   end
 end

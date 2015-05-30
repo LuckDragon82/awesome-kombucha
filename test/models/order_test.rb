@@ -27,7 +27,7 @@ class OrderTest < ActiveSupport::TestCase
     end
   end
 
-  test 'should succeed if enough attributes are past' do
+  test 'should succeed if the Credit Card process is sucessful' do
     CreditCard.stub(:process, 'success') do
       order = Order.create(first_name: 'foo', last_name: 'bar', address: 'stuff', quantity: '3', credit_card_date: "01/#{(DateTime.now.strftime('%y').to_i + 10).to_s}")
       assert_not order.new_record?
