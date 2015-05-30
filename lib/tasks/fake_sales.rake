@@ -15,7 +15,7 @@ namespace :fake do
       rescue Pusher::Error => e
         puts "An error occrured while trying to push a new event #{salesChannel}"
       end
-      sleep 15
+      sleep 5
     end
   end
 end

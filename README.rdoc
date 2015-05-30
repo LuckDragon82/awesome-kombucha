@@ -3,6 +3,14 @@
 Ruby Version: 2.2.2
 Rails Version: 4.2.1
 
+Requires mysql installed
+
+setup:
+bundle install
+rake db:create
+rake db:migrate
 
 To Run a fake pusher feed:
 <tt>rake fake:sales</tt>.
+
+
