@@ -15,13 +15,13 @@ class OrdersController < ApplicationController
   end
   
   def show
-    
+    @order = Order.find(params[:id])
   end
   
   private
   
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :street_address, :city, :state, :country, :zip_code, :credit_card_number, :credit_card_code, :quantity, :total, :credit_card_date)
+    params.require(:order).permit(:first_name, :last_name, :address, :quantity, :total, :credit_card_number, :credit_card_code, :credit_card_date)
   end
   
 end
