@@ -4,16 +4,20 @@ class Order < ActiveRecord::Base
   validates :first_name, :last_name, :address, :quantity, :country, presence: true
   validate :correct_credit_card_date
   
-  before_create :calculate_amount, :authorize_credit_card
+  before_create :calculate_amount, :set_status_to_processing, :authorize_credit_card
   
-  after_create :update_pusher
+  after_create :handle_order
+  
+  after_save :push_shipped
   
   def correct_credit_card_date
-    self.credit_card_date = credit_card_date || ''
-    error = false
-    date = credit_card_date.split '/'
-    error = true if date.length < 2 || date[0] > '12' || date[1] < DateTime.now.strftime('%y')
-    errors.add(:credit_card_date, 'is not valid') if error
+    if self.new_record?
+      self.credit_card_date = credit_card_date || ''
+      error = false
+      date = credit_card_date.split '/'
+      error = true if date.length < 2 || date[0] > '12' || date[1] < DateTime.now.strftime('%y')
+      errors.add(:credit_card_date, 'is not valid') if error
+    end
   end
   
   def calculate_amount
@@ -26,6 +30,10 @@ class Order < ActiveRecord::Base
     self.total = quantity * 10
   end
   
+  def set_status_to_processing
+    self.status = 'processing'
+  end
+  
   def authorize_credit_card
     begin
       self.confirmation_number = CreditCard.process({credit_card_number: credit_card_number, credit_card_date: credit_card_date, credit_card_code: credit_card_code, first_name: first_name, last_name: last_name, total: total})
@@ -35,7 +43,13 @@ class Order < ActiveRecord::Base
     end
   end
   
-  def update_pusher
+  def handle_order
     PusherService.handle_order(self)
+  end
+  
+  def push_shipped
+    if status == 'shipped'
+      PusherService.push_shipped
+    end
   end
 end

@@ -20,12 +20,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Awesome Kombucha</a>
+        <a class="navbar-brand" href=<%= root_path %>>Awesome Kombucha</a>
       </div>
     
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class=<%= 'active' if params[:controller] == 'orders' %>><a href=<%= orders_path  %>> Order </a></li>
+          <li class=<%= 'active' if params[:controller] == 'orders' %>><a href=<%= new_order_path  %>> Order </a></li>
           <li class=<%= 'active' if params[:controller] == 'sales_info' %>><a href=<%= sales_info_index_path  %>>World Sales</a></li>
         </ul>
       </div>

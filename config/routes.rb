@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'orders#new'
-  resources :orders, except: [:destroy, :edit, :update]
+  root to: 'home#show'
+  resources :orders, except: [:destroy, :edit, :update, :index]
   resources :sales_info, only: :index
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,3 +1,16 @@
+<header>
 <h3> Your Order </h3>
+<p> Thank you so much for buying Awesome Kombucha. We appreciate your faith in our product.</p>
+</header>
 
-<%= @order.to_json %>
+Order Number (Use this to track your order): <%= @order.confirmation_number %>
+</br>
+Name: <%= "#{@order.first_name} #{@order.last_name}"%>
+</br>
+Address: <%= "#{@order.address} #{@order.country}"%>
+</br>
+Current Status: <%= @order.status %>
+</br>
+Quantity: <%= "#{@order.quantity} bottles of Awesome Kombucha (you're so lucky!)" %>
+</br>
+Total: <%= "$#{@order.total}.00" %>
