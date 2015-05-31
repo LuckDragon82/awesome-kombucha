@@ -44,11 +44,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+  production:
+    url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: awesome-kombucha_production
-  username: awesome-kombucha
-  password: <%= ENV['AWESOME-KOMBUCHA_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: awesome-kombucha_production
+#   username: awesome-kombucha
+#   password: <%= ENV['AWESOME-KOMBUCHA_DATABASE_PASSWORD'] %>

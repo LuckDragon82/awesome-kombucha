@@ -1,12 +1,12 @@
 class Order < ActiveRecord::Base
   attr_accessor :credit_card_number, :credit_card_code, :credit_card_date
   
-  validates :first_name, :last_name, :address, :quantity, presence: true
+  validates :first_name, :last_name, :address, :quantity, :country, presence: true
   validate :correct_credit_card_date
   
-  before_save :calculate_amount, :authorize_credit_card
+  before_create :calculate_amount, :authorize_credit_card
   
-  after_save :push_update
+  after_create :update_pusher
   
   def correct_credit_card_date
     self.credit_card_date = credit_card_date || ''
@@ -22,6 +22,10 @@ class Order < ActiveRecord::Base
   
   private 
   
+  def calculate_amount
+    self.total = quantity * 10
+  end
+  
   def authorize_credit_card
     begin
       self.confirmation_number = CreditCard.process({credit_card_number: credit_card_number, credit_card_date: credit_card_date, credit_card_code: credit_card_code, first_name: first_name, last_name: last_name, total: total})
@@ -31,7 +35,7 @@ class Order < ActiveRecord::Base
     end
   end
   
-  def push_update
-    
+  def update_pusher
+    PusherService.handle_order(self)
   end
 end

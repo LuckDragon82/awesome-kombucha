@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :address, :quantity, :total, :credit_card_number, :credit_card_code, :credit_card_date)
+    params.require(:order).permit(:first_name, :last_name, :address, :quantity, :total, :country, :credit_card_number, :credit_card_code, :credit_card_date)
   end
   
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530173006) do
+ActiveRecord::Schema.define(version: 20150530230329) do
 
   create_table "orders", force: :cascade do |t|
     t.string  "first_name",          limit: 255
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150530173006) do
     t.decimal "total",                           precision: 10
     t.string  "address",             limit: 255
     t.string  "confirmation_number", limit: 255
+    t.string  "country",             limit: 255
   end
 
 end

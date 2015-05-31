@@ -13,7 +13,7 @@ namespace :fake do
       begin
         Pusher.trigger('sales_channel', 'an_event', {name: Faker::Name.name, country: Faker::Address.country, quantity: rand(100)})
       rescue Pusher::Error => e
-        puts "An error occrured while trying to push a new event #{salesChannel}"
+        puts "An error occrured while trying to push a new event #{error}"
       end
       sleep 5
     end
