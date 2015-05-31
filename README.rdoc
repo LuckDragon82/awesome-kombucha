@@ -16,4 +16,4 @@ copy env.example to .env and add values (env.example has some demo values). This
 To Run a fake pusher feed:
 <tt>rake fake:sales</tt>.
 
-
+{<img alt="Status?branch=master" src="https://codeship.com/projects/850ebeb0-e87b-0132-b8db-62885e5c211b/status?branch=develop" />}[https://codeship.com/projects/82819]
