@@ -4,7 +4,7 @@ require "minitest/autorun"
 class OrderTest < ActiveSupport::TestCase
   
   def setup
-    @valid_order = Order.new(first_name: 'foo', last_name: 'bar', address: 'stuff', quantity: '3', credit_card_number: '1', credit_card_code: '1', credit_card_date: "01/#{(DateTime.now.strftime('%y').to_i + 10).to_s}", country: 'USA')
+    @valid_order = Order.new(first_name: 'foo', last_name: 'bar', street_address: 'stuff', city: 'foo', quantity: '3', credit_card_number: '1', credit_card_code: '1', credit_card_date: "01/#{(DateTime.now.strftime('%y').to_i + 10).to_s}", country: 'USA')
   end
   
   def teardown
@@ -14,7 +14,7 @@ class OrderTest < ActiveSupport::TestCase
   test 'should require correct validators' do
     order = Order.new
     assert_not order.valid?
-    assert_equal [:first_name, :last_name, :address, :quantity, :credit_card_date, :country].sort, order.errors.keys.sort
+    assert_equal [:first_name, :last_name, :street_address, :city, :quantity, :credit_card_date, :country].sort, order.errors.keys.sort
   end
   
   test 'should work if the required fields are provided' do

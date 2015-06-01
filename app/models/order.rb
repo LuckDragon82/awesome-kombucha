@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   attr_accessor :credit_card_number, :credit_card_code, :credit_card_date
   
-  validates :first_name, :last_name, :address, :quantity, :country, presence: true
+  validates :first_name, :last_name, :street_address, :city, :quantity, :country, presence: true
   validate :correct_credit_card_date
   
   before_create :calculate_amount, :set_status_to_processing, :authorize_credit_card
