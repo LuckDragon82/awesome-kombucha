@@ -5,7 +5,7 @@ Rails Version: 4.2.1
 
 Demo at: http://awesome-kombucha-develop.herokuapp.com/
 
-Requires mysql installed
+Develop requires mysql running locally
 
 setup:
 bundle install

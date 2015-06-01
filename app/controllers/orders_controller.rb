@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to action: 'show', id: @order.id
     else
-      flash[:alert] = @order.errors.messages
+      flash[:alert] = @order.errors.full_messages.join '. '
       render :new
     end
   end
