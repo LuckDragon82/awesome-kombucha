@@ -2,6 +2,6 @@
 
 <ul class="list-group sales-list">
   <% @sales.each do |sale| %>
-    <li class='list-group-item'><%= "#{sale.first_name} #{sale.last_name} from #{sale.country} just bought #{sale.quantity} bottles of Awesome Kombucha" %> </li>
+    <li class='list-group-item'><%= "#{sale.first_name} #{sale.last_name} from #{sale.city}, #{sale.country} just bought #{sale.quantity} bottles of Awesome Kombucha" %> </li>
   <% end %>
 <ul>

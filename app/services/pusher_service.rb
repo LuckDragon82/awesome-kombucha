@@ -20,7 +20,7 @@ class PusherService
   
   def self.push_order(order)
     begin
-      Pusher.trigger('sales_channel', 'order', {first_name: order.first_name, last_name: order.last_name, quantity: order.quantity, country: order.country})
+      Pusher.trigger('sales_channel', 'order', {first_name: order.first_name, last_name: order.last_name, quantity: order.quantity, city: order.city, country: order.country})
     rescue Pusher::Error => error
       logger.error "An error occrured while trying to push a new event #{error}"
     end
