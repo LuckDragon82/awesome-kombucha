@@ -4,18 +4,19 @@
 </headers>
 
 <%= form_for @order do |f| %>
-  <div class='form-inline'>
-    <div class='form-group'>
-      <label class="sr-only" for="quantity"> Quantity </label>
-      <div class='input-group'>
-        <div class="input-group-addon"> I want </div>
-        <%= f.number_field :quantity, class: 'form-control', placeholder: 'Quantity', min: 0 %>
-        <div class="input-group-addon" > bottles for a total of $</div>
-        <input type='text' disabled id='order-total-cost' value=0 class='form-control'> </input>
-        <div class="input-group-addon">.00</div>
-      </div>
+
+  <div class='form-group'>
+    <label class="sr-only" for="quantity"> Quantity </label>
+    <div class='input-group'>
+      <div class="input-group-addon"> I want </div>
+      <%= f.number_field :quantity, class: 'form-control', placeholder: 'Quantity', min: 0 %>
+      <div class="input-group-addon" > bottles for a total of</div>
+       <div class="input-group-addon" > $</div>
+      <input type='text' disabled id='order-total-cost' value=0 class='form-control'> </input>
+      <div class="input-group-addon">.00</div>
     </div>
   </div>
+
   <h4> Shipping Information </h4>
   
   <div class='row'>
@@ -35,22 +36,22 @@
   </div>
   
   <div class='row'>
-    <div class='form-group col-xs-3'>
+    <div class='form-group col-xs-6 col-md-3'>
       <label class="sr-only" for="city">  City </label>
       <%= f.text_field :city, class: 'form-control', placeholder: 'City'%>
     </div>
   
-    <div class='form-group col-xs-3'>
+    <div class='form-group col-xs-6 col-md-3'>
       <label class="sr-only" for="state">  State </label>
       <%= f.text_field :state, class: 'form-control', placeholder: 'State'%>
     </div>
   
-    <div class='form-group col-xs-3'>
+    <div class='form-group col-xs-6 col-md-3'>
       <label class="sr-only" for="zipCode">  Zip Code </label>
       <%= f.text_field :zip_code, class: 'form-control', placeholder: 'Zip Code'%>
     </div>
     
-    <div class='form-group col-xs-3'>
+    <div class='form-group col-xs-6 col-md-3'>
       <label class="sr-only" for="country">  Country </label>
       <%= f.text_field :country, class: 'form-control', placeholder: 'Country'%>
     </div>
@@ -65,14 +66,16 @@
   
   <div class='row'>
     <div class='form-group col-xs-6'>
+      <label class="sr-only" for="creditCardExpiration"> Credit Code Expiration </label>
+      <%= f.text_field :credit_card_date, class: 'form-control', placeholder: 'Expir. MM/YY' %>
+    </div>
+    
+    <div class='form-group col-xs-6'>
       <label class="sr-only" for="creditCardSecretCode"> Credit Code Secret Code </label>
-      <%= f.text_field :credit_card_code, class: 'form-control', placeholder: 'Credit Card Secret Code' %>
+      <%= f.text_field :credit_card_code, class: 'form-control', placeholder: 'Secret Code' %>
     </div>
   
-    <div class='form-group col-xs-6'>
-      <label class="sr-only" for="creditCardExpiration"> Credit Code Expiration </label>
-      <%= f.text_field :credit_card_date, class: 'form-control', placeholder: 'Credit Card Expiration MM/YY' %>
-    </div>
+
   </div>
   <%= f.submit 'Submit Order', class: 'btn btn-primary' %>
   
