@@ -7,7 +7,7 @@ Order Number (Use this to track your order): <%= @order.confirmation_number %>
 </br>
 Name: <%= "#{@order.first_name} #{@order.last_name}"%>
 </br>
-Address: <%= "#{@order.address} #{@order.country}"%>
+Address: <%= "#{@order.street_address} #{@order.city}, #{@order.state} #{@order.zip_code} #{@order.country}"%>
 </br>
 Current Status: <%= @order.status %>
 </br>
